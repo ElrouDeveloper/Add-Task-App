@@ -1,43 +1,39 @@
-import { Component } from "react";
 import InputField from "../InputField/InputField"
 import TaskList from "../TaskList/TaskList"
 import React from "react";
 import { v4 as uuidv4 } from 'uuid';
-class Container extends Component
+import { useState } from "react";
+
+
+const Container = () =>
 {
 
-    state = {
-        messages: [
-        ]
-    }
 
-    AddToList = (e) =>
+    const [messages, setMessages] = useState([]);
+
+    const AddToList = (e) =>
     {
         const newMessage = { id: uuidv4(), message: e }
 
-        this.setState({ messages: this.state.messages.concat(newMessage) })
+        setMessages(messages.concat(newMessage))
     }
 
-    removeItem = (e) =>
+    const removeItem = (e) =>
     {
-        this.setState({
-            messages: this.state.messages.filter(t => t.id !== e),
-        });
+        setMessages(messages.filter(t => t.id !== e))
+
     }
 
-    render()
-    {
 
-        return (
-            <div>
-                <InputField AddToList={this.AddToList} />
-                <TaskList removeItem={this.removeItem} messages={this.state.messages} />
-            </div>
-        );
 
-    };
+    return (
+        <div>
+            <InputField AddToList={AddToList} />
+            <TaskList removeItem={removeItem} messages={messages} />
+        </div>
+    );
 
-}
+};
 
 export default Container;
 

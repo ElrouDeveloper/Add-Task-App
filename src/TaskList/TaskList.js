@@ -4,21 +4,19 @@ import React from "react";
 
 
 
-
-class TaskList extends Component
+const TaskList = (props) =>
 {
 
-    render()
-    {
-        const items = this.props.messages.map((item) => (
-            <Item removeItem={this.props.removeItem} id={item.id} message={item.message} />))
-        return (
-            <div>
 
-                {items}
+    const items = props.messages.map((item) => (
+        <Item removeItem={props.removeItem} id={item.id} message={item.message} />))
+    return (
+        <div>
 
-            </div>
-        );
-    }
+            {items}
+
+        </div>
+    );
+
 }
 export default TaskList;

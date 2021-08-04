@@ -1,48 +1,43 @@
 import { Component } from "react";
 import "./InputField.css";
 import { Input } from 'semantic-ui-react';
+import { useState } from "react";
 
 
-class InputField extends Component
+const InputField = (props) =>
 {
-    state = {
-        message: ''
+    const [message, setMessage] = useState('')
 
-    }
-    mySubmitHandler = (event) =>
+    const mySubmitHandler = (event) =>
     {
         console.log(event.target.message.value)
-
-        console.log("you come here", event.target.message.value)
         event.preventDefault();
-        this.props.AddToList(event.target.message.value);
+        props.AddToList(event.target.message.value);
     }
 
-    myChangeHandler = (event) =>
+    const myChangeHandler = (event) =>
     {
-        console.log("message ", event.target.value)
-        this.setState({ message: event.target.value })
+        setMessage(event.target.value)
     }
 
-    render()
-    {
 
-        return (
-            <div >
-                <form onSubmit={this.mySubmitHandler}>
-                    <input
-                        name='message'
-                        type='text'
-                        onChange={this.myChangeHandler}
-                    />
-                    <input
-                        type='submit'
-                    />
-                </form>
-            </div>
 
-        );
+    return (
+        <div >
+            <form onSubmit={mySubmitHandler}>
+                <input
+                    name='message'
+                    type='text'
+                    onChange={myChangeHandler}
+                />
+                <input
+                    type='submit'
+                />
+            </form>
+        </div>
 
-    };
+    );
+
+
 }
 export default InputField;

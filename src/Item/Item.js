@@ -1,28 +1,25 @@
 
-import { Component } from "react";
 import { Message } from 'semantic-ui-react'
 
 
 
-
-class Item extends Component
+const Item = (props) =>
 {
-    removeItem = () =>
+    const removeItem = () =>
     {
-        this.props.removeItem(this.props.id);
+        props.removeItem(props.id);
     }
 
-    render()
-    {
 
-        return (
-            <Message>
-                <p onClick={this.removeItem}>
-                    {this.props.message}
-                </p>
-            </Message>
 
-        );
-    }
+    return (
+        <Message>
+            <p onClick={removeItem}>
+                {props.message}
+            </p>
+        </Message>
+
+    );
+
 }
 export default Item;
