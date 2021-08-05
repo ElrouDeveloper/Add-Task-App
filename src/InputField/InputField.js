@@ -1,6 +1,4 @@
-import { Component } from "react";
 import "./InputField.css";
-import { Input } from 'semantic-ui-react';
 import { useState } from "react";
 
 
